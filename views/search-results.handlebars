@@ -4,19 +4,19 @@
             <div class='modal__status'>
                 Loading...
             </div>
-            <h2 class="modal__content__food-name">sfdg</h2>            
+            <h2 class="modal__content__food-name">sfdg</h2>
+            <hr>
+            <h5 class="modal__content__subtitle-name">Ingredients</h5>
             <div class='modal__content__ing-list'>
 
             </div>
 
-            {{!-- <table class='modal__content__nutrients-table'>
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Amount</td>
-                    </tr>
-                </thead>
-            </table> --}}
+            <table class='modal__content__nutrients-table'>
+                <tr class='modal__content__nutrients-table__header'>
+                    <th>Ingredient</th>
+                    <th>Amount</th>
+                </tr>
+            </table>
 
         </div>
     </div>
@@ -44,7 +44,7 @@
 </div>
 <script>
 
-    const splitByComma = string => { 
+    const splitByComma = string => {
         const parsedString = string.substring(0, string.length - 1);
         return parsedString.split(',')
     }
@@ -76,6 +76,16 @@
 
             $(".modal__status").text('');
             $(".modal__content__food-name").text(food.desc.name);
+
+            food.nutrients.forEach(nutrient => {
+
+                const tr = $('<tr>');
+                tr.append(`<td>${nutrient.name}</td>`)
+                tr.append(`<td>${nutrient.measures[0].value} ${nutrient.measures[0].eunit}</td>`)
+                
+                $('.modal__content__nutrients-table').append(tr);
+            })
+
         })
     })
 

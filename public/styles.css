@@ -37,9 +37,30 @@ body {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; }
+    width: 40rem; }
+    .modal__content__subtitle-name {
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: .5rem; }
     .modal__content__food-name {
       text-align: center;
-      font-size: 1.4rem; }
+      font-size: 2.0rem; }
     .modal__content__ing-list {
       font-size: 1.2rem; }
+    .modal__content__nutrients-table {
+      margin-top: 3rem;
+      border-collapse: collapse; }
+      .modal__content__nutrients-table__header {
+        font-size: 1.6rem;
+        color: white;
+        text-align: left;
+        border: 1px solid black; }
+        .modal__content__nutrients-table__header th {
+          padding: .5rem;
+          background-color: black; }
+      .modal__content__nutrients-table td {
+        padding: .5rem;
+        font-size: 1.4rem;
+        border: 1px solid black; }
+      .modal__content__nutrients-table tr:nth-child(odd) {
+        background-color: #cacaca; }
