@@ -1,21 +1,19 @@
 <div>
 	{{> nav}}
 	<div>
-		<form id='foodSearch'>
-			<label for="Food Search">Food Search</label>
-			<input type="text">
-			<button class="submit">Submit</button>
-		</form>	
+		<label for="Food Search">Food Search</label>
+		<input type="text" id='food'>
+		<div href='#' id='searchLink'><button>Search</button></div>
 	</div>
 </div>
 
 <script type='text/javascript'>
-	$('#foodSearch').on('submit', function(event) {
-		event.preventDefault();
-		axios.get('/search/butter')
-		.then(res => {
-			console.log(res.data);
-		})
+
+
+	$('#searchLink').on('click', function() {
+		const food = $('#food').val();
+		window.location = `/search/${food}`
 	})
-	
+
+	$('#searchLink').attr('href', food);
 </script>
