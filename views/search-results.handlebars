@@ -1,4 +1,9 @@
 <div>
+    <div id="modal" class='modal'>
+        <div class="modal__content">
+            
+        </div>                
+    </div>
     Search Results
     <div>
         hey
@@ -14,7 +19,7 @@
             {{#each foods}}
                 <li class='food-list__item-container'>
                     <div class='food-list__item' ndbno={{this.ndbno}}>
-                        {{this.name}}                        
+                        {{this.name}}
                     </div>
                 </li>
             {{/each}}
@@ -22,7 +27,28 @@
     </div>
 </div>
 <script>
+
+    // Diplay modal
     $('.food-list__item').on('click', function() {
-        console.log($(this).attr('ndbno'));
+
+        $("#modal").css({"display": "block"});
+
+        $(".modal__content").text('Loading');
+
+        const ndbno = ($(this).attr('ndbno'));        
+
+        axios.get(`/food/${ndbno}`)
+        .then(res => {
+            console.log(res.data);
+        })
     })
+
+    // Hide modal
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
 </script>

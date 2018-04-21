@@ -33,4 +33,16 @@ router.get('/search/:term', (req, res) => {
     })
 })
 
+router.get('/food/:ndbno', (req, res) => {
+
+	const {ndbno} = req.params
+
+	const searchUrl = `https://api.nal.usda.gov/ndb/V2/reports?ndbno=${ndbno}&type=b&format=json&api_key=${key}`
+
+	axios.get(searchUrl).then(result => {
+		console.log(result.data);
+		res.json(result.data.foods[0].food);
+	})
+})
+
 module.exports = router;
