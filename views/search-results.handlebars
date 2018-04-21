@@ -16,6 +16,9 @@
                     <th>Nutrient</th>
                     <th>Amount</th>
                 </tr>
+                <tbody class='modal__content__nutrients-table__body'>
+
+                </tbody>
             </table>
 
         </div>
@@ -52,14 +55,14 @@
     // Diplay modal
     $('.food-list__item').on('click', function() {
 
+        $("#modal").css({"display": "block"});        
 
         // Clears text
-        $(".modal__content__food-name").text('')
+        $(".modal__content__food-name").text('')        
+        $('.modal__content__ing-list').text('');
+        $(".modal__status").text('');
 
-
-        $("#modal").css({"display": "block"});
-
-        $(".modal__status").text('Loading...');
+        $(".modal__status").text('Loading...');        
 
         const ndbno = ($(this).attr('ndbno'));
 
@@ -80,7 +83,7 @@
                     const tr = $('<tr>');
                     tr.append(`<td>${nutrient.name}</td>`)
                     tr.append(`<td>${nutrient.value} ${nutrient.unit}</td>`)
-                    $('.modal__content__nutrients-table').append(tr);
+                    $('.modal__content__nutrients-table__body').append(tr);
                 }
             })
 
@@ -92,6 +95,10 @@
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            $(".modal__content__food-name").text('')        
+            $('.modal__content__ing-list').text('');
+            $(".modal__status").text('');
+            $('.modal__content__nutrients-table__body').empty();
         }
     }
 
