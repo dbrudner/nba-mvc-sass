@@ -1,16 +1,20 @@
 <div>
 	{{> nav}}
 	<div>
-		<label for="Food Search">Food Search</label>
-		<input type="text" id='food'>
-		<div href='#' id='searchLink'><button>Search</button></div>
+		<form id='search'>
+			<label for="Food Search">Food Search</label>
+			<input type="text" id='food'>
+			<button type='submit'>Search</button>
+		</form>
+		
 	</div>
 </div>
 
 <script type='text/javascript'>
 
 
-	$('#searchLink').on('click', function() {
+	$('#search').on('submit', function(event) {
+		event.preventDefault()
 		const food = $('#food').val();
 		window.location = `/search/${food}`
 	})

@@ -1,2 +1,15 @@
 body {
   font-size: 16px; }
+
+.food-list {
+  list-style-type: none; }
+  .food-list__item-container {
+    margin: 2rem; }
+  .food-list__item {
+    color: dodgerblue;
+    cursor: pointer;
+    display: inline-block; }
+    .food-list__item:hover {
+      transition: all .3s;
+      color: darkblue;
+      transform: scale(1.05); }

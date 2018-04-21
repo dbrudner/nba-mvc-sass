@@ -3,3 +3,24 @@ $base-font-size: 16px;
 body {
     font-size: $base-font-size;
 }
+
+.food-list {
+    
+    list-style-type: none;
+
+    &__item-container {
+        margin: 2rem;
+    }
+
+    &__item {
+        color: dodgerblue;
+        cursor: pointer;
+        display: inline-block;
+
+        &:hover {
+            transition: all .3s;
+            color: darkblue;
+            transform: scale(1.05);
+        }
+    }
+}

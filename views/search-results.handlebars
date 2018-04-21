@@ -5,13 +5,24 @@
         <div>
             Total Results: {{totalResults}}
         </div>
-        <ul>
+        {{#if tooLarge}}
+            <div>
+                Can't show all results, consider refining your search
+            </div>
+        {{/if}}
+        <ul class='food-list'>
             {{#each foods}}
-                <li>{{this.name}}</li>
+                <li class='food-list__item-container'>
+                    <div class='food-list__item' ndbno={{this.ndbno}}>
+                        {{this.name}}                        
+                    </div>
+                </li>
             {{/each}}
         </ul>
     </div>
 </div>
 <script>
-
+    $('.food-list__item').on('click', function() {
+        console.log($(this).attr('ndbno'));
+    })
 </script>

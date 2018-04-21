@@ -19,11 +19,14 @@ router.get('/search/:term', (req, res) => {
 		const foods = result.data.list.item
 
 		const totalResults = (foods.length === 500 ? "500+" : foods.length);
+		const tooLarge = (foods.length === 500 ? true : false)
 
+		console.log(foods);
 
 		const hbsObject = {
 			foods, 
-			totalResults
+			totalResults,
+			tooLarge
 		}
 
         res.render('search-results', hbsObject);
