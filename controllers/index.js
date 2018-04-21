@@ -4,6 +4,7 @@ const router = express.Router();
 
 const {key} = require('../key')
 const axios = require('axios')
+const _ = require('lodash');
 
 router.get('/', function(req, res) {
 	res.render('index')
@@ -40,8 +41,16 @@ router.get('/food/:ndbno', (req, res) => {
 	const searchUrl = `https://api.nal.usda.gov/ndb/V2/reports?ndbno=${ndbno}&type=b&format=json&api_key=${key}`
 
 	axios.get(searchUrl).then(result => {
-		console.log(result.data);
-		res.json(result.data.foods[0].food);
+		let food = result.data.foods[0].food
+
+		// Capitalize each word in ingredient string
+		let capitalizedIngredients = food.ing.desc.split(' ').map(ing => _.capitalize(ing)).join(' ')
+
+		food = {...food, capitalizedIngredients}
+
+		console.log(food);
+
+		res.json(food);
 	})
 })
 

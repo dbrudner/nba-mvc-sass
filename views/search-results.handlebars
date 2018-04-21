@@ -70,7 +70,7 @@
             const food = res.data;
             console.log(food);
 
-            const ingredients = food.ing.desc;
+            const ingredients = food.capitalizedIngredients;
 
             $('.modal__content__ing-list').text(ingredients);
 
