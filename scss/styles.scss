@@ -1,7 +1,14 @@
-$base-font-size: 16px;
+$base-font-size: 62.5%;
+
+html {
+    font-size: $base-font-size;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
 
 body {
-    font-size: $base-font-size;
+    margin: 0;
+    padding: 0;
 }
 
 .food-list {
@@ -16,6 +23,7 @@ body {
         color: dodgerblue;
         cursor: pointer;
         display: inline-block;
+        font-size: 1.6rem;
 
         &:hover {
             transition: all .3s;
@@ -43,5 +51,15 @@ body {
         padding: 20px;
         border: 1px solid #888;
         width: 80%; 
+
+        &__food-name {
+            text-align: center;
+            font-size: 1.4rem;
+        }
+
+        &__ing-list {
+            text-transform: lowercase;
+            font-size: 1.2rem;
+        }
     }
 }
