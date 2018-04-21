@@ -1,9 +1,21 @@
 <div>
 	{{> nav}}
-	index
+	<div>
+		<form id='foodSearch'>
+			<label for="Food Search">Food Search</label>
+			<input type="text">
+			<button class="submit">Submit</button>
+		</form>	
+	</div>
 </div>
 
 <script type='text/javascript'>
-
+	$('#foodSearch').on('submit', function(event) {
+		event.preventDefault();
+		axios.get('/search/butter')
+		.then(res => {
+			console.log(res.data);
+		})
+	})
 	
 </script>
