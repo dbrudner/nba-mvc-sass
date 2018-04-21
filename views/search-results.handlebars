@@ -13,7 +13,7 @@
 
             <table class='modal__content__nutrients-table'>
                 <tr class='modal__content__nutrients-table__header'>
-                    <th>Ingredient</th>
+                    <th>Nutrient</th>
                     <th>Amount</th>
                 </tr>
             </table>
@@ -63,8 +63,6 @@
 
         const ndbno = ($(this).attr('ndbno'));
 
-
-
         axios.get(`/food/${ndbno}`)
         .then(res => {
             const food = res.data;
@@ -78,12 +76,12 @@
             $(".modal__content__food-name").text(food.desc.name);
 
             food.nutrients.forEach(nutrient => {
-
-                const tr = $('<tr>');
-                tr.append(`<td>${nutrient.name}</td>`)
-                tr.append(`<td>${nutrient.measures[0].value} ${nutrient.measures[0].eunit}</td>`)
-                
-                $('.modal__content__nutrients-table').append(tr);
+                if (nutrient.value !== "0.000" && nutrient.value !== "0.00" && nutrient.value !== "0.0" && nutrient.value !== "0") {
+                    const tr = $('<tr>');
+                    tr.append(`<td>${nutrient.name}</td>`)
+                    tr.append(`<td>${nutrient.value} ${nutrient.unit}</td>`)
+                    $('.modal__content__nutrients-table').append(tr);
+                }
             })
 
         })
