@@ -1,4 +1,5 @@
 <div>
+    {{> search}}
     <div id="modal" class='modal'>
         <div class="modal__content">
             <div class='modal__status'>
@@ -23,27 +24,37 @@
 
         </div>
     </div>
-    Search Results
-    <div>
-        hey
-        <div>
-            Total Results: {{totalResults}}
-        </div>
-        {{#if tooLarge}}
-            <div>
-                Can't show all results, consider refining your search
-            </div>
-        {{/if}}
-        <ul class='food-list'>
-            {{#each foods}}
-                <li class='food-list__item-container'>
-                    <div class='food-list__item' ndbno={{this.ndbno}}>
-                        {{this.name}}
+    <div class='search-results'>
+        <h2 class='text-center search-results__header'>
+            Search Results
+        </h2>
+        <div class='text-center'>
+            {{#if error}}
+                <div>
+                    No results
+                </div>
+            {{else}}
+                <div>
+                    Total Results: {{totalResults}}
+                </div>
+                {{#if tooLarge}}
+                    <div>
+                        Can't show all results, consider refining your search
                     </div>
-                </li>
-            {{/each}}
-        </ul>
+                {{/if}}
+            {{/if}}
+            <ul class='food-list text-left'>
+                {{#each foods}}
+                    <li class='food-list__item-container'>
+                        <div class='food-list__item' ndbno={{this.ndbno}}>
+                            {{this.name}}
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
     </div>
+
 </div>
 <script>
 
@@ -55,25 +66,27 @@
     // Diplay modal
     $('.food-list__item').on('click', function() {
 
-        $("#modal").css({"display": "block"});        
+        // Shows modal
+        $("#modal").css({"display": "block"});
 
         // Clears text
-        $(".modal__content__food-name").text('')        
+        $(".modal__content__food-name").text('')
         $('.modal__content__ing-list').text('');
         $(".modal__status").text('');
-
-        $(".modal__status").text('Loading...');        
+        $(".modal__status").text('Loading...');
 
         const ndbno = ($(this).attr('ndbno'));
 
         axios.get(`/food/${ndbno}`)
         .then(res => {
             const food = res.data;
-            console.log(food);
-
             const ingredients = food.capitalizedIngredients;
 
-            $('.modal__content__ing-list').text(ingredients);
+            if (ingredients) {
+                $('.modal__content__ing-list').text(ingredients);
+            } else {
+                $('.modal__content__ing-list').text('No Ingredients Listed');
+            }
 
             $(".modal__status").text('');
             $(".modal__content__food-name").text(food.desc.name);
@@ -95,7 +108,7 @@
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
-            $(".modal__content__food-name").text('')        
+            $(".modal__content__food-name").text('')
             $('.modal__content__ing-list').text('');
             $(".modal__status").text('');
             $('.modal__content__nutrients-table__body').empty();

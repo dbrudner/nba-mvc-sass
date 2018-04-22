@@ -8,7 +8,34 @@ html {
 
 body {
     margin: 0;
-    padding: 0;
+}
+
+.main {
+    margin: 0 5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.search-container {
+    background-color: dodgerblue;
+    padding-bottom: 3rem;
+    border-bottom: 5px solid black;
+    margin: 0 -5rem;
+
+    &__form {
+        text-align: center;
+    }
+
+    &__button {
+        background-color: white;
+        color: dodgerblue;
+    }
 }
 
 .food-list {
@@ -20,16 +47,35 @@ body {
     }
 
     &__item {
-        color: dodgerblue;
+        color: #1a4065;
         cursor: pointer;
         display: inline-block;
         font-size: 1.6rem;
 
         &:hover {
-            transition: all .3s;
+            transition: all .1s;
             color: darkblue;
             transform: scale(1.05);
         }
+    }
+}
+
+.banner {
+    text-align: center;
+    background-color: dodgerblue;
+    color: white;
+    padding: 3rem 0;
+
+    &__header {
+        text-transform: uppercase;
+        letter-spacing: 2rem;
+        margin: 0;
+        font-size: 4.8rem;
+    }
+
+    &__description {
+        font-size: 1.4rem;
+        font-style: italic;
     }
 }
 

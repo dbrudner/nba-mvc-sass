@@ -4,22 +4,55 @@ html {
   box-sizing: border-box; }
 
 body {
-  margin: 0;
-  padding: 0; }
+  margin: 0; }
+
+.main {
+  margin: 0 5rem; }
+
+.text-center {
+  text-align: center; }
+
+.text-left {
+  text-align: left; }
+
+.search-container {
+  background-color: dodgerblue;
+  padding-bottom: 3rem;
+  border-bottom: 5px solid black;
+  margin: 0 -5rem; }
+  .search-container__form {
+    text-align: center; }
+  .search-container__button {
+    background-color: white;
+    color: dodgerblue; }
 
 .food-list {
   list-style-type: none; }
   .food-list__item-container {
     margin: 2rem; }
   .food-list__item {
-    color: dodgerblue;
+    color: #1a4065;
     cursor: pointer;
     display: inline-block;
     font-size: 1.6rem; }
     .food-list__item:hover {
-      transition: all .3s;
+      transition: all .1s;
       color: darkblue;
       transform: scale(1.05); }
+
+.banner {
+  text-align: center;
+  background-color: dodgerblue;
+  color: white;
+  padding: 3rem 0; }
+  .banner__header {
+    text-transform: uppercase;
+    letter-spacing: 2rem;
+    margin: 0;
+    font-size: 4.8rem; }
+  .banner__description {
+    font-size: 1.4rem;
+    font-style: italic; }
 
 .modal {
   display: none;
