@@ -16,7 +16,6 @@
     "express-handlebars": "^3.0.0",
     "lodash": "^4.17.5",
     "method-override": "^2.3.10",
-    "nba": "^4.2.2",
     "node-sass": "^4.8.3",
     "nodemon": "^1.17.3"
   }
