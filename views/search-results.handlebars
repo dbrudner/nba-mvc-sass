@@ -7,9 +7,10 @@
             </div>
             <h2 class="modal__content__food-name">sfdg</h2>
             <hr>
-            <h5 class="modal__content__subtitle-name">Ingredients</h5>
-            <div class='modal__content__ing-list'>
+            <div class="modal__content__ingredients">
+                Ingredients: <span class='modal__content__ing-list'>
 
+                </span>
             </div>
 
             <table class='modal__content__nutrients-table'>
@@ -81,6 +82,8 @@
         .then(res => {
             const food = res.data;
             const ingredients = food.capitalizedIngredients;
+
+            console.log(food);
 
             if (ingredients) {
                 $('.modal__content__ing-list').text(ingredients);

@@ -98,10 +98,9 @@ body {
         border: 1px solid #888;
         width: 40rem; 
 
-        &__subtitle-name {
+        &__ingredients {
             font-size: 1.6rem;
-            text-transform: uppercase;
-            letter-spacing: .5rem;
+            font-weight: 700;
         }
 
         &__food-name {
@@ -110,7 +109,9 @@ body {
         }
 
         &__ing-list {
-            font-size: 1.2rem;
+            color: black;
+            font-size: 1.6rem;
+            font-weight: 400;
         }
 
         &__nutrients-table {
